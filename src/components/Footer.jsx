@@ -47,12 +47,12 @@ export default function Footer({ go }) {
           {/* Brand */}
           <div>
             <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, color: 'var(--gold)', marginBottom: 8 }}>
-              ELSONNY
+              The Sight Auto
             </div>
             <p style={{ fontSize: 11, lineHeight: 1.9, color: 'var(--text-muted)' }}>
               Premium automotive showroom.<br />
               The world's finest cars<br />
-              in Egypt since 2005.
+              in Nigeria since 2026.
             </p>
           </div>
 
@@ -90,7 +90,7 @@ export default function Footer({ go }) {
           borderTop: '1px solid var(--border)', paddingTop: 18,
           textAlign: 'center', fontSize: 10, color: 'var(--text-muted)',
         }}>
-          © 2025 Elsonny Automotive — All rights reserved &nbsp;|&nbsp;
+          © 2026 The Sight Autoe — All rights reserved &nbsp;|&nbsp;
           Car imagery powered by <span style={{ color: 'var(--gold)' }}>IMAGIN.studio</span>
         </div>
       </div>
