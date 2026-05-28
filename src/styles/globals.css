@@ -1,0 +1,177 @@
+
+
+/* ─── GOOGLE FONTS ──────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+/* ─── CSS RESET & BASE ───────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  direction: ltr;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+
+input, select, textarea {
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+}
+
+/* ─── CSS VARIABLES ──────────────────────────────────────────────────────────── */
+:root {
+  --gold:    #C0A060;
+  --gold-l:  #D4B870;
+  --gold-d:  #9A7A3A;
+  --radius:  12px;
+  --radius-lg: 18px;
+  --shadow:  0 4px 24px rgba(0, 0, 0, 0.18);
+  --shadow-lg: 0 16px 56px rgba(0, 0, 0, 0.42);
+  --transition: 0.28s ease;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+}
+
+/* Dark theme (default) */
+body[data-theme="dark"] {
+  --bg:       #08080F;
+  --bg-2:     #0C0C16;
+  --surface:  #10101C;
+  --surface-2:#18182A;
+  --border:   #222236;
+  --text:     #EDE8E0;
+  --text-muted: #7070A0;
+}
+
+/* Light theme */
+body[data-theme="light"] {
+  --bg:       #F8F5F0;
+  --bg-2:     #EDE9E0;
+  --surface:  #FFFFFF;
+  --surface-2:#F0ECE6;
+  --border:   #DDD8CE;
+  --text:     #1A1510;
+  --text-muted: #6A6050;
+}
+
+/* ─── SCROLLBAR ──────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar          { width: 5px; }
+::-webkit-scrollbar-track    { background: var(--bg); }
+::-webkit-scrollbar-thumb    { background: var(--gold); border-radius: 3px; }
+
+/* ─── TYPOGRAPHY HELPERS ─────────────────────────────────────────────────────── */
+.display      { font-family: var(--font-display); }
+.text-gold    { color: var(--gold); }
+.text-muted   { color: var(--text-muted); }
+.label-xs     { font-size: 10px; letter-spacing: 3px; font-weight: 600; text-transform: uppercase; }
+
+/* ─── ANIMATION KEYFRAMES ────────────────────────────────────────────────────── */
+@keyframes fadeUp  { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.96); }     to { opacity: 1; transform: scale(1);    } }
+@keyframes float   { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+@keyframes spin    { to { transform: rotate(360deg); } }
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+@keyframes pulse   { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+/* ─── UTILITY ANIMATION CLASSES ──────────────────────────────────────────────── */
+.anim-fade-up  { animation: fadeUp  0.55s ease both; }
+.anim-slide-in { animation: slideIn 0.45s ease both; }
+.anim-scale-in { animation: scaleIn 0.35s ease both; }
+.anim-float    { animation: float   2.2s ease-in-out infinite; }
+
+/* ─── SHINE EFFECT ───────────────────────────────────────────────────────────── */
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+.shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+  transition: 0.55s;
+  pointer-events: none;
+}
+.shine:hover::after { left: 140%; }
+
+/* ─── CARD HOVER ─────────────────────────────────────────────────────────────── */
+.card-hover {
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.card-hover:hover {
+  transform: translateY(-5px) scale(1.009);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ─── IMAGE SKELETON LOADER ──────────────────────────────────────────────────── */
+.img-skeleton {
+  background: linear-gradient(90deg, var(--surface-2) 25%, var(--border) 50%, var(--surface-2) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ─── RESPONSIVE GRID HELPERS ────────────────────────────────────────────────── */
+.grid-cards {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+@media (max-width: 600px) {
+  .grid-cards {
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)) !important;
+    gap: 14px;
+  }
+}
+
+/* ─── SECTION SPACING ────────────────────────────────────────────────────────── */
+.section {
+  padding: 52px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .section { padding: 36px 14px; }
+}
+
+/* ─── HIDE SCROLLBAR (brand tabs) ────────────────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+@media (max-width: 1024px) {
+  .no-scrollbar {
+    display: none !important;
+  }
+}
+@media (max-width: 768px) {
+  .subsub {
+    display: none !important;
+  }
+}
