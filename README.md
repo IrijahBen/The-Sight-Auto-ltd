@@ -1,4 +1,4 @@
-# 🚗 Elsonny Automotive
+# 🚗 The Sight Auto
 
 Premium React car showroom with real car images via [IMAGIN.studio](https://imagin.studio) CDN.
 
